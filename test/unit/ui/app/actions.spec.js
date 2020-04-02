@@ -331,7 +331,7 @@ describe('Actions', function () {
     })
 
     it('calls importAccountWithStrategies in background', async function () {
-      const store = mockStore()
+      const store = mockStore({ metamask: devState })
 
       importAccountWithStrategySpy = sinon.spy(background, 'importAccountWithStrategy')
 
@@ -342,7 +342,7 @@ describe('Actions', function () {
     })
 
     it('displays warning error message when importAccount in background callback errors', async function () {
-      const store = mockStore()
+      const store = mockStore({ metamask: devState })
 
       const expectedActions = [
         { type: 'SHOW_LOADING_INDICATION', value: 'This may take a while, please be patient.' },
@@ -994,14 +994,14 @@ describe('Actions', function () {
     })
 
     it('#showAccountDetail', function () {
-      const store = mockStore()
+      const store = mockStore({ metamask: devState })
 
       store.dispatch(actions.showAccountDetail())
       assert(setSelectedAddressSpy.calledOnce)
     })
 
     it('displays warning if setSelectedAddress throws', function () {
-      const store = mockStore()
+      const store = mockStore({ metamask: devState })
       const expectedActions = [
         { type: 'SHOW_LOADING_INDICATION', value: undefined },
         { type: 'HIDE_LOADING_INDICATION' },
