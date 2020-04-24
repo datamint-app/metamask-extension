@@ -2102,8 +2102,8 @@ export function rejectPermissionsRequest (requestId) {
  * Call ONLY as a result of direct user action.
  */
 export function legacyExposeAccounts (origin, accounts) {
-  return () => {
-    return background.legacyExposeAccounts(origin, accounts)
+  return async () => {
+    await promisifiedBackground.legacyExposeAccounts(origin, accounts)
   }
 }
 
