@@ -2111,8 +2111,8 @@ export function legacyExposeAccounts (origin, accounts) {
  * Clears the given permissions for the given origin.
  */
 export function removePermissionsFor (domains) {
-  return () => {
-    background.removePermissionsFor(domains)
+  return async () => {
+    await promisifiedBackground.removePermissionsFor(domains)
   }
 }
 
